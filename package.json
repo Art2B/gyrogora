@@ -1,0 +1,27 @@
+{
+  "name": "gyrogora",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "parcel src/index.html -p 1234"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Art2B/gyrogora.git"
+  },
+  "author": "Art2B",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Art2B/gyrogora/issues"
+  },
+  "homepage": "https://github.com/Art2B/gyrogora#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.7.0"
+  },
+  "dependencies": {
+    "gsap": "^1.20.4",
+    "paper": "^0.11.5",
+    "randomcolor": "^0.5.3"
+  }
+}
