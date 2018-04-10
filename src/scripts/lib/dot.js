@@ -2,7 +2,13 @@ import { TweenMax, TimelineMax } from "gsap"
 import paper from 'paper'
 import randomColor from 'randomcolor'
 
+import config from './../config'
+
 export default class Dot {
+  /**
+   * [constructor create new Dot]
+   * @param  {paper.Point} center center of screen
+   */
   constructor (center) {
     this.point = new paper.Point(window.innerWidth/2, window.innerHeight/2).multiply(Point.random())
     this.color = randomColor()
@@ -11,26 +17,41 @@ export default class Dot {
     this.iPoint = new paper.Point(0, 0)
 
     this.followPath = new paper.Path.Ellipse({
-      center: center,
+      center: [center.x, center.y],
       radius: [(this.point.x - (window.innerWidth/2)), (this.point.y - (window.innerHeight/2))]
     })
 
     this.point = this.followPath.getPointAt(Math.random() * (this.followPath.length))
 
     // Point and circles
-    this.dotToLine = new paper.Path.Line({x: 0, y: 0}, {x: 0, y: 0})
-    this.dotToLine.strokeWidth = this.thickness
-    this.dotToLine.strokeColor = 'white'
+    this.dotToLine = new paper.Path.Line({
+      from: [0, 0],
+      to: [0, 0],
+      strokeWidth: this.thickness,
+      strokeColor: 'white'
+    })
 
     this.fillingDotToLine = this.dotToLine.clone()
-    this.fillingDotToLine.strokeWidth = this.thickness
     this.fillingDotToLine.strokeColor = this.color
 
     this.fillingProgress = 0
 
-    this.dotCircle = new paper.Path.Circle(this.point, this.thickness)
-    this.dotCircle.fillColor = this.color
+    this.dotCircle = this.getDotCircle(this.point, this.thickness, this.color)
   }
+
+  getDotCircle (center, thickness, color) {
+    return new paper.Path.Circle({
+      center: [center.x, center.y],
+      radius: thickness,
+      fillColor: color
+    })
+  }
+
+  /**
+   * [update position of dot and lines]
+   * @param  {paper.Point} center - Center of screen
+   * @param  {paper.Point} mouse - Position of the mouse
+   */
   update (center, mouse) {
     const cpVector = center.subtract(this.point)
     const cmVector = center.subtract(mouse)
@@ -39,7 +60,7 @@ export default class Dot {
 
     this.iPoint = center.subtract(ciVector)
 
-    let step = this.followPath.length / (3600 * 2)
+    let step = this.followPath.length / config.fullTurnDuration
     let offset = this.followPath.getOffsetOf(this.point)
     offset += step
     if (offset > this.followPath.length) {
@@ -49,21 +70,9 @@ export default class Dot {
     this.point = newPosition.clone()
   }
 
-  drawLine () {
-    this.dotCircle.remove()
-    this.dotCircle = new paper.Path.Circle(this.point, this.thickness)
-    this.dotCircle.fillColor = this.color
-
-    this.dotToLine.removeSegments()
-    this.dotToLine.add(this.point, this.iPoint)
-
-    this.fillingDotToLine.removeSegments()
-    this.fillingDotToLine.add(this.point)
-
-    const point = this.dotToLine.getLocationAt(this.dotToLine.length * this.fillingProgress)
-    this.fillingDotToLine.add(point)
-  }
-
+  /**
+   * [animateFill animate the line filling effect from dot to center line]
+   */
   animateFill () {
     TweenMax.to(this, 1, {
       fillingProgress: 1,
@@ -76,7 +85,20 @@ export default class Dot {
     })
   }
 
+  /**
+   * [draw Draw dot with lines]
+   */
   draw () {
-    this.drawLine()
+    this.dotCircle.remove()
+    this.dotCircle = this.getDotCircle(this.point, this.thickness, this.color)
+
+    this.dotToLine.removeSegments()
+    this.dotToLine.add(this.point, this.iPoint)
+
+    this.fillingDotToLine.removeSegments()
+    this.fillingDotToLine.add(this.point)
+
+    const point = this.dotToLine.getLocationAt(this.dotToLine.length * this.fillingProgress)
+    this.fillingDotToLine.add(point)
   }
 } 
