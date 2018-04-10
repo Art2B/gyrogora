@@ -5,14 +5,13 @@ import randomColor from 'randomcolor'
 export default class Dot {
   constructor (center) {
     this.point = new paper.Point(window.innerWidth/2, window.innerHeight/2).multiply(Point.random())
-    this.center = center
     this.color = randomColor()
     this.thickness = Math.random() * (3 - 0.1) + 0.1
 
     this.iPoint = new paper.Point(0, 0)
 
     this.followPath = new paper.Path.Ellipse({
-      center: this.center,
+      center: center,
       radius: [(this.point.x - (window.innerWidth/2)), (this.point.y - (window.innerHeight/2))]
     })
 
@@ -32,13 +31,13 @@ export default class Dot {
     this.dotCircle = new paper.Path.Circle(this.point, this.thickness)
     this.dotCircle.fillColor = this.color
   }
-  update (mouse) {
-    const cpVector = this.center.subtract(this.point)
-    const cmVector = this.center.subtract(mouse)
+  update (center, mouse) {
+    const cpVector = center.subtract(this.point)
+    const cmVector = center.subtract(mouse)
     const ciVector = cmVector.clone()
     ciVector.length = Math.cos((cpVector.getDirectedAngle(cmVector)*-1) * (Math.PI/180)) * cpVector.length
 
-    this.iPoint = this.center.subtract(ciVector)
+    this.iPoint = center.subtract(ciVector)
 
     let step = this.followPath.length / (3600 * 2)
     let offset = this.followPath.getOffsetOf(this.point)

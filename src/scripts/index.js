@@ -6,7 +6,7 @@ paper.install(window)
 window.onload = event => {
   paper.setup('canvas')
   let tool = new Tool()
-  const center = new Point(window.innerWidth/2, window.innerHeight/2)
+  let center = new Point(window.innerWidth/2, window.innerHeight/2)
   let mouse
 
   tool.onMouseMove = event => {
@@ -27,7 +27,7 @@ window.onload = event => {
     path.fitBounds(view.bounds)
 
     dots.forEach(dot => {
-      dot.update(mouse)
+      dot.update(center, mouse)
       dot.draw()
     })
   }
@@ -35,6 +35,14 @@ window.onload = event => {
   view.onMouseDown = event => {
     dots.forEach(dot => {
       dot.animateFill()
+    })
+  }
+
+  view.onResize = event => {
+    center = new Point(window.innerWidth/2, window.innerHeight/2)
+    dots.forEach(dot => {
+      dot.update(center, mouse)
+      dot.draw()
     })
   }
 }
