@@ -10,7 +10,7 @@ export default class Dot {
    * @param  {paper.Point} center center of screen
    */
   constructor (center) {
-    this.point = new paper.Point(window.innerWidth/2, window.innerHeight/2).multiply(Point.random())
+    this.point = new paper.Point(window.innerWidth/2, window.innerHeight/2).multiply(paper.Point.random())
     this.color = randomColor()
     this.thickness = Math.random() * (3 - 0.1) + 0.1
 

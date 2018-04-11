@@ -24,7 +24,7 @@ export default class FullSketch extends Step {
   }
 
   reset () {
-    project.clear()
+    this.project.clear()
     this.generateElements()
   }
 
