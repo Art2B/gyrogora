@@ -35,6 +35,7 @@ export default class FullSketch extends Step {
   }
 
   onFrame () {
+    this.renderBackground()
     this.line.removeSegments()
     this.line.add(this.center, this.mouse)
     this.line.fitBounds(this.view.bounds)

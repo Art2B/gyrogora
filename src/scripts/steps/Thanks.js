@@ -6,6 +6,7 @@ import config from './../config'
 export default class Thanks extends Step {
   onFrame () {
     this.project.clear()
+    this.renderBackground()
     const yCenterOffset = 150
     const outroTopOptions = {
       ...config.textStyle,

@@ -11,6 +11,7 @@ export default class PointOnEllipse extends Step {
 
   onFrame () {
     this.project.clear()
+    this.renderBackground()
     const line = new paper.Path.Line({
       from: [this.center.x, this.center.y],
       to: [this.mouse.x, this.mouse.y],
