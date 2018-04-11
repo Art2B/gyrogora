@@ -4,32 +4,34 @@ import Step from './../lib/step'
 import Dot from './../lib/dot'
 import config from './../config'
 
-export default class Step7 extends Step {
+export default class fullSketch extends Step {
   constructor (project) {
     super(project)
     this.generateElements()
   }
 
   generateElements () {
-    this.dot = new Dot(this.center)
-
     this.line = new paper.Path.Line({
       from: [this.center.x, this.center.y],
       to: [0, 0],
       strokeColor: 'white'
     })
 
-    this.followPath = this.dot.followPath.clone()
-    this.followPath.strokeColor = this.dot.color
+    this.dots = []
+    for (let i=0; i < config.nbDot; i++) {
+      this.dots.push(new Dot(this.center))
+    }
   }
 
   reset () {
-    this.project.clear()
+    project.clear()
     this.generateElements()
   }
 
   onMouseDown() {
-    this.dot.animateFill()
+    this.dots.forEach(dot => {
+      dot.animateFill()
+    })
   }
 
   onFrame () {
@@ -37,7 +39,9 @@ export default class Step7 extends Step {
     this.line.add(this.center, this.mouse)
     this.line.fitBounds(this.view.bounds)
 
-    this.dot.update(this.center, this.mouse)
-    this.dot.draw()
+    this.dots.forEach(dot => {
+      dot.update(this.center, this.mouse)
+      dot.draw()
+    })
   }
 }

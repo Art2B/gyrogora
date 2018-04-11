@@ -2,7 +2,7 @@ import paper from 'paper'
 
 import Step from './../lib/step'
 
-export default class Step3 extends Step {
+export default class simplePoint extends Step {
   constructor (project) {
     super(project)
     this.dot = new paper.Point(200, 200)

@@ -1,14 +1,7 @@
 import paper from 'paper'
 
 import Dot from './lib/dot'
-import Step1 from './steps/step1'
-import Step2 from './steps/step2'
-import Step3 from './steps/step3'
-import Step4 from './steps/step4'
-import Step5 from './steps/step5'
-import Step6 from './steps/step6'
-import Step7 from './steps/step7'
-import Step8 from './steps/step8'
+import Steps from './steps'
 
 import config from './config'
 
@@ -25,21 +18,14 @@ window.onload = event => {
   // Init paper in canvas with id 'canvas'
   paper.setup('canvas')
 
-  const steps = [
-    new Step1(project),
-    new Step2(project),
-    new Step3(project),
-    new Step4(project),
-    new Step5(project),
-    new Step6(project),
-    new Step7(project),
-    new Step8(project)
-  ]
-
-  let currentStepIndex = 0
-  updateStep(view, steps[currentStepIndex])
+  const steps = []
+  Steps.forEach(step => {
+    steps.push(new step(project))
+  })
 
   let tool = new Tool()
+  let currentStepIndex = 0
+  updateStep(view, steps[currentStepIndex])
 
   // Update mouse paper.Point position when moving the mouse
   tool.onMouseMove = event => {

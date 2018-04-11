@@ -2,7 +2,7 @@ import paper from 'paper'
 
 import Step from './../lib/step'
 
-export default class Step5 extends Step {
+export default class pointOnEllipse extends Step {
   constructor (project) {
     super(project)
     this.dot = new paper.Point(window.innerWidth/2, window.innerHeight/2).multiply(paper.Point.random())

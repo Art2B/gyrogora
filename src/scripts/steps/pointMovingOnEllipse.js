@@ -4,7 +4,7 @@ import Step from './../lib/step'
 import Dot from './../lib/dot'
 import config from './../config'
 
-export default class Step6 extends Step {
+export default class pointMovingOnEllipse extends Step {
   constructor (project) {
     super(project)
     this.generateElements()

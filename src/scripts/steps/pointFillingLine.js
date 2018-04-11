@@ -4,34 +4,32 @@ import Step from './../lib/step'
 import Dot from './../lib/dot'
 import config from './../config'
 
-export default class Step8 extends Step {
+export default class pointFillingLine extends Step {
   constructor (project) {
     super(project)
     this.generateElements()
   }
 
   generateElements () {
+    this.dot = new Dot(this.center)
+
     this.line = new paper.Path.Line({
       from: [this.center.x, this.center.y],
       to: [0, 0],
       strokeColor: 'white'
     })
 
-    this.dots = []
-    for (let i=0; i < config.nbDot; i++) {
-      this.dots.push(new Dot(this.center))
-    }
+    this.followPath = this.dot.followPath.clone()
+    this.followPath.strokeColor = this.dot.color
   }
 
   reset () {
-    project.clear()
+    this.project.clear()
     this.generateElements()
   }
 
   onMouseDown() {
-    this.dots.forEach(dot => {
-      dot.animateFill()
-    })
+    this.dot.animateFill()
   }
 
   onFrame () {
@@ -39,9 +37,7 @@ export default class Step8 extends Step {
     this.line.add(this.center, this.mouse)
     this.line.fitBounds(this.view.bounds)
 
-    this.dots.forEach(dot => {
-      dot.update(this.center, this.mouse)
-      dot.draw()
-    })
+    this.dot.update(this.center, this.mouse)
+    this.dot.draw()
   }
 }
