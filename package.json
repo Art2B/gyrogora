@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Art2B/gyrogora#readme",
   "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "parcel-bundler": "^1.7.0"
   },
   "dependencies": {
