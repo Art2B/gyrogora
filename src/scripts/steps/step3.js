@@ -8,10 +8,11 @@ export default class Step3 extends Step {
     this.dot = new paper.Point(200, 200)
   }
 
-  draw (mouse) {
+  onFrame () {
+    project.clear()
     const line = new paper.Path.Line({
       from: [this.center.x, this.center.y],
-      to: [mouse.x, mouse.y],
+      to: [this.mouse.x, this.mouse.y],
       strokeColor: 'white'
     })
     line.fitBounds(this.view.bounds)

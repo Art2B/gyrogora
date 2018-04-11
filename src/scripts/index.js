@@ -8,8 +8,16 @@ import Step4 from './steps/step4'
 import Step5 from './steps/step5'
 import Step6 from './steps/step6'
 import Step7 from './steps/step7'
+import Step8 from './steps/step8'
 
 import config from './config'
+
+const updateStep = (view, step) => {
+  step.reset()
+  view.onFrame = () => step.onFrame()
+  view.onMouseDown = () => step.onMouseDown()
+  view.onResize = () => step.onResize()
+}
 
 // Install paper scope in window scope
 paper.install(window)
@@ -17,65 +25,38 @@ window.onload = event => {
   // Init paper in canvas with id 'canvas'
   paper.setup('canvas')
 
-  // const step1 = new Step1(view)
-  // const step2 = new Step2(view)
-  // const step3 = new Step3(view)
-  // const step4 = new Step4(view)
-  // const step5 = new Step5(view)
-  // const step6 = new Step6(view)
-  const step7 = new Step7(view)
+  const steps = [
+    new Step1(view),
+    new Step2(view),
+    new Step3(view),
+    new Step4(view),
+    new Step5(view),
+    new Step6(view),
+    new Step7(view),
+    new Step8(view)
+  ]
+
+  let currentStepIndex = 0
+  updateStep(view, steps[currentStepIndex])
 
   let tool = new Tool()
-  // let center = new Point(window.innerWidth/2, window.innerHeight/2)
-  let mouse = new Point(0, 0)
 
   // Update mouse paper.Point position when moving the mouse
   tool.onMouseMove = event => {
-    mouse = new Point(event.point)
+    steps[currentStepIndex].updateMouse(new Point(event.point))
   }
-
-  view.onFrame = event => {
-    project.clear()
-    step7.draw(mouse)
+  tool.onKeyDown = event => {
+    if (event.key === 'r') {
+      steps[currentStepIndex].reset()
+    }
+    if (event.key === 'left' && currentStepIndex > 0) {
+      currentStepIndex--
+      updateStep(view, steps[currentStepIndex])
+    }
+    if (event.key === 'right' && currentStepIndex < (steps.length - 1)) {
+      currentStepIndex++
+      updateStep(view, steps[currentStepIndex])
+    }
+    console.log(`Current step: ${currentStepIndex + 1}`)
   }
-
-  // // Init all dots
-  // let dots = []
-  // for (let i=0; i < config.nbDot; i++) {
-  //   dots.push(new Dot(center))
-  // }
-
-  // // Create line from center to mouse
-  // let path = new Path.Line({x: 0, y: 0}, {x: 0, y: 0})
-  // path.strokeColor = 'white'
-
-  // // On each frames
-  // view.onFrame = event => {
-  //   // Reset line from center to mouse actual position
-  //   path.removeSegments()
-  //   path.add(center, mouse)
-  //   path.fitBounds(view.bounds)
-
-  //   // Update dots and draw them
-  //   dots.forEach(dot => {
-  //     dot.update(center, mouse)
-  //     dot.draw()
-  //   })
-  // }
-
-  // // On click, trigger fill animation
-  // view.onMouseDown = event => {
-  //   dots.forEach(dot => {
-  //     dot.animateFill()
-  //   })
-  // }
-
-  // // On resize, update center and update dots
-  // view.onResize = event => {
-  //   center = new Point(window.innerWidth/2, window.innerHeight/2)
-  //   dots.forEach(dot => {
-  //     dot.update(center, mouse)
-  //     dot.draw()
-  //   })
-  // }
 }

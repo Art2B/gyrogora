@@ -9,10 +9,11 @@ export default class Step5 extends Step {
     this.originalDot = this.dot.clone()
   }
 
-  draw (mouse) {
+  onFrame () {
+    project.clear()
     const line = new paper.Path.Line({
       from: [this.center.x, this.center.y],
-      to: [mouse.x, mouse.y],
+      to: [this.mouse.x, this.mouse.y],
       strokeColor: 'white'
     })
     line.fitBounds(this.view.bounds)
@@ -31,7 +32,7 @@ export default class Step5 extends Step {
     })
 
     const cpVector = this.center.subtract(this.dot)
-    const cmVector = this.center.subtract(mouse)
+    const cmVector = this.center.subtract(this.mouse)
     const ciVector = cmVector.clone()
     ciVector.length = Math.cos((cpVector.getDirectedAngle(cmVector)*-1) * (Math.PI/180)) * cpVector.length
     const iPoint = this.center.subtract(ciVector)
