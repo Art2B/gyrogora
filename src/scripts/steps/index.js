@@ -1,23 +1,23 @@
-import intro from './intro'
-import lineCenterMouse from './lineCenterMouse'
-import lineCenterMouseFull from './lineCenterMouseFull'
-import simplePoint from './simplePoint'
-import pointIntersectionLine from './pointIntersectionLine'
-import pointOnEllipse from './pointOnEllipse'
-import pointMovingOnEllipse from './pointMovingOnEllipse'
-import pointFillingLine from './pointFillingLine'
-import fullSketch from './fullSketch'
-import thanks from './thanks'
+import Intro from './Intro'
+import LineCenterMouse from './LineCenterMouse'
+import LineCenterMouseFull from './LineCenterMouseFull'
+import SimplePoint from './SimplePoint'
+import PointIntersectionLine from './PointIntersectionLine'
+import PointOnEllipse from './PointOnEllipse'
+import PointMovingOnEllipse from './PointMovingOnEllipse'
+import PointFillingLine from './PointFillingLine'
+import FullSketch from './FullSketch'
+import Thanks from './Thanks'
 
 export default [
-  intro,
-  lineCenterMouse,
-  lineCenterMouseFull,
-  simplePoint,
-  pointIntersectionLine,
-  pointOnEllipse,
-  pointMovingOnEllipse,
-  pointFillingLine,
-  fullSketch,
-  thanks
+  Intro,
+  LineCenterMouse,
+  LineCenterMouseFull,
+  SimplePoint,
+  PointIntersectionLine,
+  PointOnEllipse,
+  PointMovingOnEllipse,
+  PointFillingLine,
+  FullSketch,
+  Thanks
 ]

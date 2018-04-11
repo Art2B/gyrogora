@@ -2,7 +2,7 @@ import paper from 'paper'
 
 import Step from './../lib/step'
 
-export default class lineCenterMouseFull extends Step {
+export default class LineCenterMouseFull extends Step {
   onFrame () {
     this.project.clear()
     const line = new paper.Path.Line({

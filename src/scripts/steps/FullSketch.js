@@ -4,7 +4,7 @@ import Step from './../lib/step'
 import Dot from './../lib/dot'
 import config from './../config'
 
-export default class fullSketch extends Step {
+export default class FullSketch extends Step {
   constructor (project) {
     super(project)
     this.generateElements()

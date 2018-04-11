@@ -2,11 +2,10 @@ import paper from 'paper'
 
 import Step from './../lib/step'
 
-export default class pointOnEllipse extends Step {
+export default class PointIntersectionLine extends Step {
   constructor (project) {
     super(project)
-    this.dot = new paper.Point(window.innerWidth/2, window.innerHeight/2).multiply(paper.Point.random())
-    this.originalDot = this.dot.clone()
+    this.dot = new paper.Point(200, 200)
   }
 
   onFrame () {
@@ -17,13 +16,6 @@ export default class pointOnEllipse extends Step {
       strokeColor: 'white'
     })
     line.fitBounds(this.view.bounds)
-
-    this.followPath = new paper.Path.Ellipse({
-      center: [this.center.x, this.center.y],
-      radius: [(this.originalDot.x - (window.innerWidth/2)), (this.originalDot.y - (window.innerHeight/2))],
-      strokeColor: 'pink'
-    })
-    this.dot = this.followPath.getPointAt(10)
 
     const dot = new paper.Path.Circle({
       center: [this.dot.x, this.dot.y],
