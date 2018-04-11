@@ -1,3 +1,4 @@
+import intro from './intro'
 import lineCenterMouse from './lineCenterMouse'
 import lineCenterMouseFull from './lineCenterMouseFull'
 import simplePoint from './simplePoint'
@@ -6,8 +7,10 @@ import pointOnEllipse from './pointOnEllipse'
 import pointMovingOnEllipse from './pointMovingOnEllipse'
 import pointFillingLine from './pointFillingLine'
 import fullSketch from './fullSketch'
+import thanks from './thanks'
 
 export default [
+  intro,
   lineCenterMouse,
   lineCenterMouseFull,
   simplePoint,
@@ -15,5 +18,6 @@ export default [
   pointOnEllipse,
   pointMovingOnEllipse,
   pointFillingLine,
-  fullSketch
+  fullSketch,
+  thanks
 ]
