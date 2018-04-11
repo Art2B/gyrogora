@@ -9,7 +9,7 @@ export default class Intro extends Step {
     thankText.fillColor = 'white'
     thankText.justification = 'center'
     thankText.fontSize = '32px'
-    thankText.fontFamily = 'Courier New'
+    thankText.fontFamily = 'Junction'
     thankText.content = 'INTRODUCTION !'
   }
 }
