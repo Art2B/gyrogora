@@ -26,14 +26,14 @@ window.onload = event => {
   paper.setup('canvas')
 
   const steps = [
-    new Step1(view),
-    new Step2(view),
-    new Step3(view),
-    new Step4(view),
-    new Step5(view),
-    new Step6(view),
-    new Step7(view),
-    new Step8(view)
+    new Step1(project),
+    new Step2(project),
+    new Step3(project),
+    new Step4(project),
+    new Step5(project),
+    new Step6(project),
+    new Step7(project),
+    new Step8(project)
   ]
 
   let currentStepIndex = 0

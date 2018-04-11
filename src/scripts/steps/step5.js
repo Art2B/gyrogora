@@ -3,14 +3,14 @@ import paper from 'paper'
 import Step from './../lib/step'
 
 export default class Step5 extends Step {
-  constructor (view) {
-    super(view)
+  constructor (project) {
+    super(project)
     this.dot = new paper.Point(window.innerWidth/2, window.innerHeight/2).multiply(paper.Point.random())
     this.originalDot = this.dot.clone()
   }
 
   onFrame () {
-    project.clear()
+    this.project.clear()
     const line = new paper.Path.Line({
       from: [this.center.x, this.center.y],
       to: [this.mouse.x, this.mouse.y],

@@ -5,8 +5,9 @@ import Dot from './../lib/dot'
 import config from './../config'
 
 export default class Step7 extends Step {
-  constructor (view) {
-    super(view)
+  constructor (project) {
+    super(project)
+    this.generateElements()
   }
 
   generateElements () {
@@ -23,7 +24,7 @@ export default class Step7 extends Step {
   }
 
   reset () {
-    project.clear()
+    this.project.clear()
     this.generateElements()
   }
 

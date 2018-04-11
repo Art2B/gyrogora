@@ -3,13 +3,13 @@ import paper from 'paper'
 import Step from './../lib/step'
 
 export default class Step4 extends Step {
-  constructor (view) {
-    super(view)
+  constructor (project) {
+    super(project)
     this.dot = new paper.Point(200, 200)
   }
 
   onFrame () {
-    project.clear()
+    this.project.clear()
     const line = new paper.Path.Line({
       from: [this.center.x, this.center.y],
       to: [this.mouse.x, this.mouse.y],

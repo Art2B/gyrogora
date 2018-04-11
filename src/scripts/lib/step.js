@@ -1,9 +1,10 @@
 import paper from 'paper'
 
 export default class Step {
-  constructor (view) {
+  constructor (project) {
     this.center = new Point(window.innerWidth/2, window.innerHeight/2)
-    this.view = view
+    this.project = project
+    this.view = project.view
     this.mouse = new Point(0, 0)
   }
 

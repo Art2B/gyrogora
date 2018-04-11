@@ -5,8 +5,9 @@ import Dot from './../lib/dot'
 import config from './../config'
 
 export default class Step8 extends Step {
-  constructor (view) {
-    super(view)
+  constructor (project) {
+    super(project)
+    this.generateElements()
   }
 
   generateElements () {

@@ -4,7 +4,7 @@ import Step from './../lib/step'
 
 export default class Step2 extends Step {
   onFrame () {
-    project.clear()
+    this.project.clear()
     const line = new paper.Path.Line({
       from: [this.center.x, this.center.y],
       to: [this.mouse.x, this.mouse.y],
