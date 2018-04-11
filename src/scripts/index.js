@@ -26,7 +26,7 @@ window.onload = event => {
 
   // Update mouse paper.Point position when moving the mouse
   tool.onMouseMove = event => {
-    steps[currentStepIndex].updateMouse(new paper.Point(event.point))
+    steps[currentStepIndex].onMouseMove(event.point)
   }
   tool.onKeyDown = event => {
     if (event.key === 'r') {

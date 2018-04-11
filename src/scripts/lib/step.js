@@ -10,7 +10,7 @@ export default class Step {
 
   reset () {}
 
-  updateMouse (mouse) {
+  onMouseMove (mouse) {
     this.mouse = mouse
   }
 
