@@ -22,12 +22,27 @@ export default class PointIntersectionLine extends Step {
       radius: 5,
       fillColor: 'indianred'
     })
+    const centerCross = new paper.Path.Star({
+      center: [this.center.x, this.center.y],
+      points: 4,
+      radius1: 15,
+      radius2: 2,
+      fillColor: 'indianred'
+    })
 
     const cpVector = this.center.subtract(this.dot)
     const cmVector = this.center.subtract(this.mouse)
     const ciVector = cmVector.clone()
     ciVector.length = Math.cos((cpVector.getDirectedAngle(cmVector)*-1) * (Math.PI/180)) * cpVector.length
     const iPoint = this.center.subtract(ciVector)
+
+    const iPointCross = new paper.Path.Star({
+      center: [iPoint.x, iPoint.y],
+      points: 4,
+      radius1: 15,
+      radius2: 2,
+      fillColor: 'indianred'
+    })
 
     const iLine = new paper.Path.Line({
       from: [this.dot.x, this.dot.y],

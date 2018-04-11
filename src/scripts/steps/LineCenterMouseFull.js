@@ -11,5 +11,20 @@ export default class LineCenterMouseFull extends Step {
       strokeColor: 'white'
     })
     line.fitBounds(this.view.bounds)
+
+    const centerCross = new paper.Path.Star({
+      center: [this.center.x, this.center.y],
+      points: 4,
+      radius1: 15,
+      radius2: 2,
+      fillColor: 'indianred'
+    })
+    const mouseCross = new paper.Path.Star({
+      center: [this.mouse.x, this.mouse.y],
+      points: 4,
+      radius1: 15,
+      radius2: 2,
+      fillColor: 'indianred'
+    })
   }
 }

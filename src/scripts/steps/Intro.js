@@ -18,21 +18,14 @@ export default class Intro extends Step {
       this.dots.push(new Dot(this.center))
     }
 
-    const textStyle = {
-      fillColor: 'white',
-      justification: 'center',
-      fontSize: '128px',
-      fontFamily: 'Junction',
-      fontWeight: 'bold'
-    }
     const yCenterOffset = 100
     const introTopOptions = {
-      ...textStyle,
+      ...config.textStyle,
       point: new paper.Point(this.center.x, this.center.y - yCenterOffset),
       content: 'HOW DOES'
     }
     const introBottomOptions = {
-      ...textStyle,
+      ...config.textStyle,
       point: new paper.Point(this.center.x, this.center.y + yCenterOffset),
       content: 'THIS WORK ?'
     }
