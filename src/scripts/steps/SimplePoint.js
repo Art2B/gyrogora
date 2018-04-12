@@ -24,12 +24,18 @@ export default class SimplePoint extends Step {
       fillColor: 'indianred'
     })
     
-    const centerCross = new paper.Path.Star({
-      center: [this.center.x, this.center.y],
-      points: 4,
-      radius1: 15,
-      radius2: 2,
-      fillColor: 'indianred'
+    // Center cross
+    const centerCrossHor = new paper.Path.Line({
+      from: [this.center.x - 10, this.center.y],
+      to: [this.center.x + 10, this.center.y],
+      strokeColor: 'indianred',
+      strokeWidth: 3
+    })
+    const centerCrossVer = new paper.Path.Line({
+      from: [this.center.x, this.center.y - 10],
+      to: [this.center.x, this.center.y + 10],
+      strokeColor: 'indianred',
+      strokeWidth: 3
     })
   }
 }

@@ -23,12 +23,18 @@ export default class PointIntersectionLine extends Step {
       radius: 5,
       fillColor: 'indianred'
     })
-    const centerCross = new paper.Path.Star({
-      center: [this.center.x, this.center.y],
-      points: 4,
-      radius1: 15,
-      radius2: 2,
-      fillColor: 'indianred'
+    // Center cross
+    const centerCrossHor = new paper.Path.Line({
+      from: [this.center.x - 10, this.center.y],
+      to: [this.center.x + 10, this.center.y],
+      strokeColor: 'indianred',
+      strokeWidth: 3
+    })
+    const centerCrossVer = new paper.Path.Line({
+      from: [this.center.x, this.center.y - 10],
+      to: [this.center.x, this.center.y + 10],
+      strokeColor: 'indianred',
+      strokeWidth: 3
     })
 
     const cpVector = this.center.subtract(this.dot)
@@ -37,12 +43,18 @@ export default class PointIntersectionLine extends Step {
     ciVector.length = Math.cos((cpVector.getDirectedAngle(cmVector)*-1) * (Math.PI/180)) * cpVector.length
     const iPoint = this.center.subtract(ciVector)
 
-    const iPointCross = new paper.Path.Star({
-      center: [iPoint.x, iPoint.y],
-      points: 4,
-      radius1: 15,
-      radius2: 2,
-      fillColor: 'indianred'
+    // iPoint cross
+    const iPointCrossHor = new paper.Path.Line({
+      from: [iPoint.x - 10, iPoint.y],
+      to: [iPoint.x + 10, iPoint.y],
+      strokeColor: 'indianred',
+      strokeWidth: 3
+    })
+    const iPointCrossVer = new paper.Path.Line({
+      from: [iPoint.x, iPoint.y - 10],
+      to: [iPoint.x, iPoint.y + 10],
+      strokeColor: 'indianred',
+      strokeWidth: 3
     })
 
     const iLine = new paper.Path.Line({
