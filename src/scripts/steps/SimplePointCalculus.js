@@ -40,7 +40,7 @@ export default class SimplePointCalculus extends Step {
     })
 
     // Display calculus
-    const xPosText = 1000
+    const xPosText = config.xPositionText
     const cpVector = this.center.subtract(this.dot)
     const cmVector = this.center.subtract(this.mouse)
     const ciVector = cmVector.clone()

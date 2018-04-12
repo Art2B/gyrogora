@@ -84,7 +84,7 @@ export default class LineCenterMouseCalculus extends Step {
       strokeWidth: 3
     })
 
-    const xPosText = 1000
+    const xPosText = config.xPositionText
     const AC = this.center.x
     const CM = Math.floor(Math.sqrt(Math.pow(this.center.x - this.mouse.x, 2) + Math.pow(this.center.y - this.mouse.y, 2)))
     const AM = Math.floor(Math.sqrt(Math.pow(0 - this.mouse.x, 2) + Math.pow(this.center.y - this.mouse.y, 2)))
@@ -115,6 +115,7 @@ export default class LineCenterMouseCalculus extends Step {
 
     // First step formula
     const formulaY = 240
+    const formulaX = 250
     const formulaEgual = new paper.PointText({
       ...config.textStyle,
       justification: 'left',
@@ -124,28 +125,26 @@ export default class LineCenterMouseCalculus extends Step {
     })
     const formulaTop = new paper.PointText({
       ...config.textStyle,
-      justification: 'left',
       fontSize: '24px',
       content: formulas.topFormula,
-      point: new paper.Point(xPosText + 175, formulaY - 20)
+      point: new paper.Point(xPosText + formulaX, formulaY - 20)
     })
     const formulaDivide = new paper.PointText({
       ...config.textStyle,
-      justification: 'left',
       fontSize: '24px',
       content: `____________`,
-      point: new paper.Point(xPosText + 160, formulaY -10)
+      point: new paper.Point(xPosText + formulaX, formulaY -10)
     })
     const formulaBottom = new paper.PointText({
       ...config.textStyle,
-      justification: 'left',
       fontSize: '24px',
       content: formulas.bottomFormula,
-      point: new paper.Point(xPosText + 175, formulaY + 20)
+      point: new paper.Point(xPosText + formulaX, formulaY + 20)
     })
 
     // Second step formula
     const secondFormulaY = formulaY + 100
+    const secondFormulaX = 330
     const formulaEgualReplaced = new paper.PointText({
       ...config.textStyle,
       justification: 'left',
@@ -155,24 +154,21 @@ export default class LineCenterMouseCalculus extends Step {
     })
     const formulaTopReplaced = new paper.PointText({
       ...config.textStyle,
-      justification: 'left',
       fontSize: '24px',
       content: formulas.topResult,
-      point: new paper.Point(xPosText + 175, secondFormulaY-20)
+      point: new paper.Point(xPosText + secondFormulaX, secondFormulaY-20)
     })
     const formulaDivideReplaced = new paper.PointText({
       ...config.textStyle,
-      justification: 'left',
       fontSize: '24px',
       content: `____________`,
-      point: new paper.Point(xPosText + 160, secondFormulaY-10)
+      point: new paper.Point(xPosText + secondFormulaX, secondFormulaY-10)
     })
     const formulaBottomReplaced = new paper.PointText({
       ...config.textStyle,
-      justification: 'left',
       fontSize: '24px',
       content: formulas.bottomResult,
-      point: new paper.Point(xPosText + 175, secondFormulaY+20)
+      point: new paper.Point(xPosText + secondFormulaX, secondFormulaY+20)
     })
 
     // Formula resolved
