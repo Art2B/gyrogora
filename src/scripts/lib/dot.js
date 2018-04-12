@@ -13,7 +13,7 @@ export default class Dot {
     this.point = new paper.Point(window.innerWidth/2, window.innerHeight/2).multiply(paper.Point.random())
     this.color = options.color ? options.color : randomColor()
     this.thickness = options.thickness ? options.thickness : Math.random() * (3 - 0.1) + 0.1
-
+    this.dotRadius = options.dotRadius ? options.dotRadius : this.thickness
     this.iPoint = new paper.Point(0, 0)
 
     this.followPath = new paper.Path.Ellipse({
@@ -35,7 +35,7 @@ export default class Dot {
     this.fillingDotToLine.strokeColor = this.color
     this.fillingProgress = 0
 
-    this.dotCircle = this.getDotCircle(this.point, this.thickness, this.color)
+    this.dotCircle = this.getDotCircle(this.point, this.dotRadius, this.color)
   }
 
   getDotCircle (center, thickness, color) {
@@ -89,7 +89,7 @@ export default class Dot {
    */
   draw () {
     this.dotCircle.remove()
-    this.dotCircle = this.getDotCircle(this.point, this.thickness, this.color)
+    this.dotCircle = this.getDotCircle(this.point, this.dotRadius, this.color)
 
     this.dotToLine.removeSegments()
     this.dotToLine.add(this.point, this.iPoint)
