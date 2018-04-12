@@ -9,10 +9,10 @@ export default class Dot {
    * [constructor create new Dot]
    * @param  {paper.Point} center center of screen
    */
-  constructor (center) {
+  constructor (center, options = {}) {
     this.point = new paper.Point(window.innerWidth/2, window.innerHeight/2).multiply(paper.Point.random())
-    this.color = randomColor()
-    this.thickness = Math.random() * (3 - 0.1) + 0.1
+    this.color = options.color ? options.color : randomColor()
+    this.thickness = options.thickness ? options.thickness : Math.random() * (3 - 0.1) + 0.1
 
     this.iPoint = new paper.Point(0, 0)
 
@@ -33,7 +33,6 @@ export default class Dot {
 
     this.fillingDotToLine = this.dotToLine.clone()
     this.fillingDotToLine.strokeColor = this.color
-
     this.fillingProgress = 0
 
     this.dotCircle = this.getDotCircle(this.point, this.thickness, this.color)
