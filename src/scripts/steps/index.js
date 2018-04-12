@@ -10,7 +10,6 @@ import PointMovingOnEllipse from './PointMovingOnEllipse'
 import PointFillingLine from './PointFillingLine'
 import PointFillingLineNoEllipse from './PointFillingLineNoEllipse'
 import FullSketchWithoutRand from './FullSketchWithoutRand'
-import FullSketch from './FullSketch'
 import Thanks from './Thanks'
 
 export default [
@@ -26,6 +25,5 @@ export default [
   PointFillingLine,
   PointFillingLineNoEllipse,
   FullSketchWithoutRand,
-  FullSketch,
   Thanks
 ]
