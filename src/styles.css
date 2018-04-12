@@ -6,6 +6,30 @@ html, body {
   overflow: hidden;
 }
 
+.tooltip {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 5;
+  font-family: 'Junction';
+  border-radius: 5px;
+  padding: 10px 15px;
+  color: #222;
+  opacity: 1;
+  h1 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+  }
+  p {
+    margin: 0 0 6px 0;
+    font-size: 16px;
+    strong {
+      font-weight: bold;
+    }
+  }
+}
+
 canvas {
   margin: 0;
   padding: 0;

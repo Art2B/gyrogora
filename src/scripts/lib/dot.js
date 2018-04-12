@@ -8,6 +8,10 @@ export default class Dot {
   /**
    * [constructor create new Dot]
    * @param  {paper.Point} center center of screen
+   * @param {Object} options Options to overwrite default configuration
+   * @param {string} options.color Color of the dot
+   * @param {number} options.thickness Thickness of line
+   * @param {number} options.dotRadius Radius of the dot
    */
   constructor (center, options = {}) {
     this.point = new paper.Point(window.innerWidth/2, window.innerHeight/2).multiply(paper.Point.random())

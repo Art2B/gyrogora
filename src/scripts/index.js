@@ -1,4 +1,5 @@
 import paper from 'paper'
+import { TweenMax, Back } from 'gsap'
 
 import Dot from './lib/dot'
 import Steps from './steps'
@@ -14,6 +15,7 @@ const updateStep = (view, step) => {
 
 window.onload = event => {
   const project = new paper.Project('canvas')
+  let displayHelp = true
 
   const steps = []
   Steps.forEach(step => {
@@ -40,6 +42,14 @@ window.onload = event => {
       currentStepIndex++
       updateStep(project.view, steps[currentStepIndex])
     }
-    console.log(`Current step: ${currentStepIndex + 1}`)
+    if (event.key === 'h') {
+      if (displayHelp) {
+        TweenMax.to('#tooltip-help', 0.4, { opacity: 0, scale: 0.9, ease: Back.easeOut.config(1.4)})
+        displayHelp = false
+      } else {
+        TweenMax.to('#tooltip-help', 0.4, { opacity: 1, scale: 1, ease: Back.easeOut.config(1.4)})
+        displayHelp = true
+      }
+    }
   }
 }
