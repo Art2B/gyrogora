@@ -1,5 +1,6 @@
 import Intro from './Intro'
 import LineCenterMouse from './LineCenterMouse'
+import LineCenterMouseCalculus from './LineCenterMouseCalculus'
 import LineCenterMouseFull from './LineCenterMouseFull'
 import SimplePoint from './SimplePoint'
 import PointIntersectionLine from './PointIntersectionLine'
@@ -13,6 +14,7 @@ import Thanks from './Thanks'
 export default [
   Intro,
   LineCenterMouse,
+  LineCenterMouseCalculus,
   LineCenterMouseFull,
   SimplePoint,
   PointIntersectionLine,

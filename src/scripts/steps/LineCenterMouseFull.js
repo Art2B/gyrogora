@@ -41,13 +41,5 @@ export default class LineCenterMouseFull extends Step {
       strokeColor: 'indianred',
       strokeWidth: 3
     })
-
-    // calculus about angles
-    const aText = new paper.PointText({
-      ...config.textOptions,
-      fontSize: '24px',
-      content: `A (0, ${this.center.y})`,
-      point: new paper.Point(700, 200)
-    })
   }
 }
