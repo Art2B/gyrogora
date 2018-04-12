@@ -11,7 +11,10 @@ export default class PointMovingOnEllipse extends Step {
   }
 
   generateElements () {
-    this.dot = new Dot(this.center)
+    this.dot = new Dot(this.center, {
+      color: 'indianred',
+      thickness: 2
+    })
 
     this.line = new paper.Path.Line({
       from: [this.center.x, this.center.y],
