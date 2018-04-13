@@ -5,36 +5,14 @@ import config from './../config'
 
 function getFormulas (a, b, c) {
   const max = Math.max(a, b, c)
-  let formulas
-
-  if (max === a) {
-    formulas = {
-      angle: 'CAM',
-      topFormula: 'AM² + CM²- AC²',
-      topResult: `${Math.pow(b, 2)} + ${Math.pow(c, 2)} - ${Math.pow(a, 2)}`,
-      bottomFormula: '2 * AM * CM',
-      bottomResult: `2 * ${b} * ${c}`
-    }
-    formulas.result = (Math.pow(b, 2) + Math.pow(c, 2) - Math.pow(a, 2)) / (2 * b * c)
-  } else if (max === b) {
-    formulas = {
+  let formulas = {
       angle: 'ACM',
-      topFormula: 'AM² + AC²- CM²',
+      topFormula: 'CM² + AC²- AM²',
       topResult: `${Math.pow(a, 2)} + ${Math.pow(c, 2)} - ${Math.pow(b, 2)}`,
-      bottomFormula: '2 * AC * AM',
-      bottomResult: `2 * ${a} * ${c}`
-    }
-    formulas.result = (Math.pow(a, 2) + Math.pow(c, 2) - Math.pow(b, 2)) / (2 * a * c)
-  } else if (max === c) {
-    formulas = {
-      angle: 'AMC',
-      topFormula: 'AC² + CM²- AM²',
-      topResult: `${Math.pow(a, 2)} + ${Math.pow(b, 2)} - ${Math.pow(c, 2)}`,
       bottomFormula: '2 * AC * CM',
       bottomResult: `2 * ${a} * ${b}`
     }
     formulas.result = (Math.pow(a, 2) + Math.pow(b, 2) - Math.pow(c, 2)) / (2 * a * b)
-  }
 
   if (formulas.result > 1) {
     formulas.result = 1
