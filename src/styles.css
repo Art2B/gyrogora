@@ -4,6 +4,7 @@ html, body {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  cursor: none;
 }
 
 .tooltip {
@@ -33,7 +34,6 @@ html, body {
 canvas {
   margin: 0;
   padding: 0;
-  cursor: none;
 }
 
 canvas[resize] {
